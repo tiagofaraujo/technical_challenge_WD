@@ -1,0 +1,18 @@
+# Dependency directories
+node_modules
+jspm_packages
+
+# Debug log from npm
+npm-debug.log
+
+# Environment Variables should NEVER be published
+.env
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# VS Code
+.vscode
