@@ -28,8 +28,7 @@ export default function AllPhones() {
                 <Link to={`/phones/${phone.id}`}>
                 <h3>{phone.name}</h3>
                 </Link>
-               {/*  //image */}
-                <img src={phone.imageFileName} alt={phone.name} />
+                <img src={`/images/${phone.imageFileName}`} alt={phone.name} />
                 <p>Manufacturer: {phone.manufacturer}</p>
                 <p>Description: {phone.description}</p>
                 <p>Color: {phone.color}</p>
