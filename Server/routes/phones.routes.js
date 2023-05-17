@@ -1,34 +1,22 @@
 const router = require('express').Router();
-const Phone = require('../models/Phone.model');
-const moongose = require('mongoose');
+const data = require('../data/phones.json');
 
 // Show all phones (use the phones.json) as fake data
-router.get('/phones', (req, res, next) => {
-    Phone.find()
-        .then((phones) => {
-            res.status(200).json(phones);
-        })
-        .catch((err) => {
-            res.status(500).json({
-                errorMessage: 'Something went wrong',
-                message: err,
-            });
-        });
-}
-);
+router.get('/', (req, res, next) => {
+    res.status(200).json(data);
+});
 
-//	Show a phone details
-router.get('/phones/:phoneId', (req, res, next) => {
-    const { phoneId } = req.params;
-    Phone.findById(phoneId)
-        .then((phone) => {
-            res.status(200).json(phone);
-        })
-        .catch((err) => {
-            res.status(500).json({
-                errorMessage: 'Something went wrong',
-                message: err,
-            });
-        });
-}
-);
+
+///phones/:id Show a phone details
+
+router.get('/:id', (req, res, next) => {
+    const phoneId = req.params.id;
+    const phone = data.find((phone) => phone._id === phoneId);
+    if (phone) {
+        res.status(200).json(phone);
+    } else {
+        res.status(404).json({ message: 'Phone not found' });
+    }
+});
+
+module.exports = router;
