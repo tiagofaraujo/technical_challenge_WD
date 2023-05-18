@@ -8,15 +8,16 @@ router.get('/', (req, res, next) => {
 
 
 ///phones/:id Show a phone details
-
 router.get('/:id', (req, res, next) => {
-    const phoneId = req.params.id;
-    const phone = data.find((phone) => phone._id === phoneId);
-    if (phone) {
-        res.status(200).json(phone);
-    } else {
-        res.status(404).json({ message: 'Phone not found' });
-    }
+  const phoneId = parseInt(req.params.id);
+  console.log(phoneId);
+  const phone = data.find((phone) => phone.id === phoneId);
+  if (phone) {
+    res.status(200).json(phone);
+  } else {
+    res.status(404).json({ message: 'Phone not found' });
+  }
 });
+
 
 module.exports = router;
